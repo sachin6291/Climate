@@ -1,0 +1,32 @@
+.form,.feild{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.form input[type="text"],
+.form select{
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, .15); 
+    backdrop-filter: blur(5px);
+    border: .1rem solid var(--white);
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: 400;
+    border-radius: 1rem;
+}
+
+.feild ::placeholder{
+    color: var(--white);
+}
+
+.submit{
+    background-color: rgba(245, 158, 11, .65 );
+    backdrop-filter: blur(5px);
+    border: none;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 1rem;
+}
