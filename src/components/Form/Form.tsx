@@ -1,8 +1,50 @@
+import { ChangeEvent, FormEvent, useState } from "react"
 import { countries } from "../../Data/countries"
 import styles from './Form.module.css'
-const Form = () => {
+import type { SearchType } from "../../types"
+import Alert from "../Alert/Alert"
+
+type FormProp={
+    fetchWeather: () => void
+}
+
+const Form = ({fetchWeather} : FormProp) => {
+
+
+    const [search, setSearch]= useState<SearchType>({
+        city:'',
+        country:''
+    })
+
+    const[alert, setAlert]= useState('')
+
+
+    const handleChange=(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>{
+        setSearch({
+            ...search,
+            [e.target.name]: e.target.value
+        })
+    }
+
+
+    const handleSubmit =(e: FormEvent<HTMLFormElement>)=>{
+        
+        e.preventDefault()
+
+        if (Object.values(search).includes('')){
+           setAlert('All Feilds are Required')
+            return
+        }
+
+        fetchWeather()
+    }
+
+
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
+
+        {alert && <Alert>{alert}</Alert>}
 
         <div className={styles.feild}>
             <label htmlFor="city">City:</label>
@@ -10,13 +52,16 @@ const Form = () => {
                 id="city"
                 type="text"
                 name="city"
-                placeholder="City" 
+                placeholder="City"
+                value={search.city}
+                onChange={handleChange} 
             />
         </div>
         
         <div className={styles.feild}>
             <label htmlFor="country">Country:</label>
-            <select name="country" id="country">
+
+            <select name="country" id="country" value={search.country} onChange={handleChange}>
                 <option value="">-- Select a Country --</option>
                 {countries.map(country=>(
                     <option
