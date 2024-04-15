@@ -5,7 +5,7 @@ import type { SearchType } from "../../types"
 import Alert from "../Alert/Alert"
 
 type FormProp={
-    fetchWeather: () => void
+    fetchWeather: (search: SearchType) => Promise<void>
 }
 
 const Form = ({fetchWeather} : FormProp) => {
@@ -36,7 +36,7 @@ const Form = ({fetchWeather} : FormProp) => {
             return
         }
 
-        fetchWeather()
+        fetchWeather(search)
     }
 
 
