@@ -1,0 +1,23 @@
+.container{
+    background-color: rgba(255, 255, 255, .15); 
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+    text-align: center;
+    padding: 1rem;
+}
+.current{
+    font-size: 6rem;
+    font-weight: 600;
+    margin: 0;
+}
+.temperatures{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+.temperatures p{
+    font-weight: 200;
+}
+.temperatures span{
+    font-weight: 700;
+}
